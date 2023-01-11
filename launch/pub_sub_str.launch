@@ -1,0 +1,5 @@
+<launch>
+    <param name="rate" type="double" value="5.0" />
+    <node name="publisher" pkg="workshop" type="pub_str.py"/>
+    <node name="subscriber" pkg="workshop" type="sub_str.py"/>
+</launch>

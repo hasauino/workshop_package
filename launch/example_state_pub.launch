@@ -1,0 +1,9 @@
+<launch>
+
+  <param name="robot_description" textfile="$(find workshop)/urdf/avatar_robot.urdf" />
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+  <node pkg="workshop" type="publish_joints.py" name="publish_joints" />
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find workshop)/rviz_config/urdf.rviz"/>
+
+</launch>
