@@ -1,0 +1,28 @@
+<launch>
+    <include file="$(find workshop)/launch/gmapping.launch">
+        <arg name="rviz_config" value="navigation.rviz" />
+    </include>
+
+
+    <node pkg="move_base" type="move_base" name="move_base">
+
+        <!-- Local + Global planners -->
+        <param name="base_global_planner" value="navfn/NavfnROS" />
+        <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+        <rosparam file="$(find workshop)/param/planner.yaml" command="load" />
+
+
+        <!-- observation sources located in costmap_common.yaml -->
+        <rosparam file="$(find workshop)/param/costmap_common.yaml" command="load"
+            ns="global_costmap" />
+        <rosparam file="$(find workshop)/param/costmap_common.yaml" command="load"
+            ns="local_costmap" />
+
+        <!-- costmap-->
+        <rosparam file="$(find workshop)/param/costmap_local.yaml" command="load" />
+
+        <!-- global costmap -->
+        <rosparam file="$(find workshop)/param/costmap_global.yaml" command="load" />
+
+    </node>
+</launch>

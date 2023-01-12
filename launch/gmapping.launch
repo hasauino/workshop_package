@@ -1,6 +1,7 @@
 <launch>
 
   <arg name="scan_topic" default="front/scan" />
+  <arg name="rviz_config" default="gmapping.rviz" />
 
   <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
     <rosparam>
@@ -42,7 +43,7 @@
       lasamplestep: 0.005
 
     </rosparam>
-    <remap from="scan" to="$(arg scan_topic)"/>
+    <remap from="scan" to="$(arg scan_topic)" />
   </node>
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find workshop)/rviz_config/gmapping.rviz"/>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find workshop)/rviz_config/$(arg rviz_config)" />
 </launch>
