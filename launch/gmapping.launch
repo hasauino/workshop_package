@@ -44,4 +44,5 @@
     </rosparam>
     <remap from="scan" to="$(arg scan_topic)"/>
   </node>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find workshop)/rviz_config/gmapping.rviz"/>
 </launch>
